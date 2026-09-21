@@ -1,125 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>StudyMate - Student Study Planner</title>
-
-    <link rel="stylesheet" href="istyle.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DecodeLabs – Intern Manager (Project 4)</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
+  <header>
+    <h1>🧠 Intern Manager</h1>
+    <p>Frontend &amp; Backend Integration – DecodeLabs Project 4</p>
+  </header>
 
-    <!-- Header -->
-    <header>
-        <nav>
-            <h1>StudyMate</h1>
+  <main>
+    <!-- Controls -->
+    <section class="card controls">
+      <button id="loadBtn">Load Interns</button>
+      <button id="dashboardBtn" class="secondary">Load Dashboard (parallel)</button>
+      <button id="brokenBtn" class="danger">Simulate Server Error</button>
+      <input type="search" id="searchInput" placeholder="Search name or role…" />
+    </section>
 
-            <button id="menuButton">☰</button>
+    <!-- Status area: loading spinner + error banner -->
+    <div id="spinner" class="spinner hidden" aria-label="Loading"></div>
+    <div id="message" class="message hidden" role="alert">
+      <span id="messageText"></span>
+      <button id="retryBtn" class="hidden">Retry</button>
+    </div>
 
-            <ul id="navMenu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#subjects">Subjects</a></li>
-                <li><a href="#tasks">Tasks</a></li>
-                <li><a href="#about">About</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- Stats -->
+    <section id="stats" class="stats hidden"></section>
 
-    <main>
+    <!-- Add intern form (POST) -->
+    <section class="card">
+      <h2>Register New Intern</h2>
+      <form id="internForm" novalidate>
+        <input name="name" placeholder="Full name" required />
+        <input name="email" type="email" placeholder="Email" required />
+        <input name="role" placeholder="Role (e.g. Frontend Intern)" required />
+        <input name="contact" placeholder="10-digit contact number" required />
+        <button type="submit">Add Intern</button>
+      </form>
+    </section>
 
-        <!-- Hero Section -->
-        <section id="home" class="hero">
-            <h2>Plan Your Studies. Achieve Your Goals.</h2>
+    <!-- Interns list (dynamic data injected here) -->
+    <section>
+      <h2>Interns</h2>
+      <div id="internList" class="grid"></div>
+    </section>
+  </main>
 
-            <p>
-                Organize your subjects and daily study tasks in one simple place.
-            </p>
-
-            <a href="#tasks" class="button">Get Started</a>
-        </section>
-
-
-        <!-- Subjects Section -->
-        <section id="subjects">
-            <h2>My Subjects</h2>
-
-            <div class="subjects-container">
-
-                <article class="subject-card">
-                    <h3>Python</h3>
-                    <p>Programming practice</p>
-                </article>
-
-                <article class="subject-card">
-                    <h3>DBMS</h3>
-                    <p>Database concepts</p>
-                </article>
-
-                <article class="subject-card">
-                    <h3>DSA</h3>
-                    <p>Data structures and algorithms</p>
-                </article>
-
-                <article class="subject-card">
-                    <h3>Web Development</h3>
-                    <p>HTML, CSS and JavaScript</p>
-                </article>
-
-            </div>
-        </section>
-
-
-        <!-- Tasks Section -->
-        <section id="tasks">
-            <h2>My Tasks</h2>
-
-            <div class="task-container">
-
-                <label>
-                    <input type="checkbox">
-                    Complete Python practice
-                </label>
-
-                <label>
-                    <input type="checkbox">
-                    Study DBMS
-                </label>
-
-                <label>
-                    <input type="checkbox">
-                    Complete DSA assignment
-                </label>
-
-            </div>
-
-            <button id="addTaskButton" class="button">
-                + Add Task
-            </button>
-        </section>
-
-
-        <!-- About Section -->
-        <section id="about">
-            <h2>About StudyMate</h2>
-
-            <p>
-                StudyMate helps students organize their subjects
-                and manage their study tasks efficiently.
-            </p>
-        </section>
-
-    </main>
-
-
-    <!-- Footer -->
-    <footer>
-        <p>© 2026 StudyMate. All rights reserved.</p>
-    </footer>
-
-
-    <script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
 </html>
